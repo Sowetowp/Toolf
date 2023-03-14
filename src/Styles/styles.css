@@ -1,0 +1,104 @@
+.inp{
+    width: 100%;
+}
+.md{
+    min-height: 100vh;
+}
+.butt{
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+}
+.admin{
+    font-weight: 600;
+    font-size: 20px;
+}
+.welc{
+    font-size: 40px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+.ubut{
+    border-radius: 10px;
+    border: solid;
+    border-width: 0.1px;
+    width: 170px;
+    font-size: 40px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+.ubutt{
+    border-radius: 10px;
+    border: solid;
+    border-width: 0.1px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+.abut{
+    border-radius: 10px;
+    background-color: black;
+    border: none;
+    color: white;
+    width: 170px;
+    font-size: 40px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
+.malgridd{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    min-height: 300px;
+}
+.malgriddd{
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+}
+.malgridd:hover{
+    box-shadow: 0px 0px 10px rgb(183, 182, 182);
+    border-radius: 5px;
+}
+.malgriddd:hover{
+    box-shadow: 0px 0px 10px rgb(183, 182, 182);
+    border-radius: 5px;
+}
+.malgchairr{
+    width: 70%;
+    height: 170px;
+}
+.malsmcoloo{
+    width: 15px;
+    height: 13px;
+    border: none;
+    margin: 3px;
+    background-color: transparent;
+}
+.malwrop{
+    font-size: 12px;
+    margin-top: 12px;
+}
+.maldoll{
+    font-weight: 700;
+    font-size: 14px;
+}
+.malcart{
+    color: #933205;
+    font-size: 15px;
+    border-width: 0.1px;
+    border-radius: 7px;
+}
+.malcartt{
+    font-size: 25px;
+    border-width: 0.1px;
+    border-radius: 7px;
+}
+.p1{
+    font-size: 35px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+}
