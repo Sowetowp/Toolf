@@ -29,3 +29,18 @@ export const getAvailableToolsReducer = (state = {}, action) => {
 			return state
 	}
 }
+
+export const hireReducer = (state = {}, action) => {
+    switch(action.type){
+        case types.HIRE_REQUEST:
+            return {loading: true}
+        case types.HIRE_SUCCESS:
+            return {loading: false, success: true}
+        case types.HIRE_FAIL:
+            return {loading: false, error: action.payload}
+        case types.HIRE_RESET:
+            return {}
+        default:
+            return state
+    }
+}

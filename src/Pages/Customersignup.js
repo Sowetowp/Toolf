@@ -19,8 +19,8 @@ const Customersignup = () => {
     const [confirmPassword, setConfirmPassword] =useState("")
     const [message, setMessage] = useState("")
 
-    const userAuth = useSelector((state) => state.userAuth)
-    const {userDetail} = userAuth
+    const userRegister = useSelector((state) => state.userRegister)
+    const {userDetail} = userRegister
 
     const submitHandler = (e) => {
         e.preventDefault()

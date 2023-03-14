@@ -7,7 +7,7 @@ import a200 from "../Assets/Images/a200.jpg"
 import a300 from "../Assets/Images/a300.jpg"
 import a500 from "../Assets/Images/a500.jpeg"
 import a600 from "../Assets/Images/a600.jpeg"
-import { get_all_tools, get_available_tools } from '../Redux/Actions/ToolAction'
+import { get_available_tools, hire_tool } from '../Redux/Actions/ToolAction'
 import "../Styles/styles.css"
 
 
@@ -27,9 +27,24 @@ const Oproducts = () => {
 	const getAvailableTools = useSelector((state) => state.getAvailableTools)
 	const { loading, tools } = getAvailableTools
 
-  
-    console.log(tools)
-    console.log(loading)
+    const userAuth = useSelector((state) => state.userAuth)
+    const {userDetail} = userAuth
+
+    const toolHire = useSelector((state) => state.toolHire)
+    const {success} = toolHire
+
+  const hirehandler = (e, id) => {
+    e.preventDefault()
+    let data = {
+        firstName: userDetail.firstName,
+        lastName: userDetail.lastName,
+        email: userDetail.email,
+        address: userDetail.address
+    }
+    if(window.confirm("Are you sure you want to hire this tool?")) {
+        dispatch(hire_tool(data, id)) 
+    }
+  }
 
     useEffect(() => {
         dispatch(get_available_tools())
@@ -51,7 +66,7 @@ const Oproducts = () => {
                     {tool.image == "a600" ? a006 : null}
                     <p className='text-muted malwrop'>NAME: {tool.toolName}</p>
                     <p className='text-dark maldoll'>${tool.price}</p>
-                    <button className='malcart'>PLACE ORDER</button>
+                    <button onClick={(e) => hirehandler(e, tool._id)} className='malcart'>PLACE ORDER</button>
                 </div>
             </div>)}
             </div>

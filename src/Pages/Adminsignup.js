@@ -19,8 +19,8 @@ const Adminsignup = () => {
 
     const navigate = useNavigate()
 
-    const adminAuth = useSelector((state) => state.adminAuth)
-    const {adminDetail} = adminAuth
+    const adminRegister = useSelector((state) => state.adminRegister)
+    const {adminDetail} = adminRegister
 
 
     const submitHandler = (e) => {

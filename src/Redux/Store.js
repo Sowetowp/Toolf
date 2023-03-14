@@ -11,7 +11,7 @@ const logger = createLogger()
 const persistConfig = {
     key: "root",
     storage,
-    whiteList: ["userAuth"]
+    whiteList: ["userAuth", "adminRegister", "userRegister", "adminAuth"]
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

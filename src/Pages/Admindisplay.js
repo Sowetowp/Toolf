@@ -7,7 +7,7 @@ import a300 from "../Assets/Images/a300.jpg"
 import a500 from "../Assets/Images/a500.jpeg"
 import a600 from "../Assets/Images/a600.jpeg"
 import { admin_logout } from '../Redux/Actions/Adminaction'
-import { get_all_tools } from '../Redux/Actions/ToolAction'
+import { get_all_tools, hire_tool } from '../Redux/Actions/ToolAction'
 import "../Styles/styles.css"
 
 const Admindisplay = () => {
@@ -26,7 +26,25 @@ const Admindisplay = () => {
 	const getAllTools = useSelector((state) => state.getAllTools)
 	const { loading, tools } = getAllTools
 
+    const adminAuth = useSelector((state) => state.adminAuth)
+    const {adminDetail} = adminAuth
   
+    const toolHire = useSelector((state) => state.toolHire)
+    const {success} = toolHire
+
+    const hirehandler = (e, id) => {
+    e.preventDefault()
+    let data = {
+        firstName: adminDetail.firstName,
+        lastName: adminDetail.lastName,
+        email: adminDetail.email,
+        address: adminDetail.address
+    }
+    if(window.confirm("Are you sure you want to hire this tool?")) {
+        dispatch(hire_tool(data, id)) 
+    }
+  }
+
     console.log(tools)
     console.log(loading)
 
@@ -60,7 +78,7 @@ const Admindisplay = () => {
                                 <p className='text-dark maldoll'>${tool.price}</p>
                                 <button className='malcart'>{tool.availability == true ? "AVAILABLE" : "NOT AVAILABLE"}</button>
                                 <br></br>
-                                <button className='malcart my-3'>PLACE ORDER</button>
+                                <button className='malcart my-3' onClick={(e) => hirehandler(e, tool._id)}>PLACE ORDER</button>
                             </div>
                         </div>)}
                     </div>

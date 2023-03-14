@@ -47,3 +47,25 @@ export const get_available_tools = () => async (dispatch, getState) => {
 		toast.error(message, { position: 'top-right' })
 	}
 }
+
+export const hire_tool = (hire, id) => async(dispatch, getState) => {
+    console.log(hire)
+	console.log(id)
+    try {
+        dispatch({type: types.HIRE_REQUEST})
+        const {data} = await axios.post(`${url}/tool/hire/${id}`, hire)
+        if(data.status === "ok"){
+            dispatch({type: types.HIRE_SUCCESS, payload: data.data})
+            toast.success("order placed successfully", {
+                position: "top-right"
+            })
+        }
+    } catch (error) {
+        console.log(error)
+        const message = error.response ? error.response.data.message : "something went wrong"
+        dispatch({type: types.HIRE_FAIL, payload: message})
+        toast.error(message, {
+            position: "top-right"
+        })
+    }
+}
