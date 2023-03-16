@@ -11,10 +11,10 @@ import { get_all_tools, hire_tool, update_tool } from '../Redux/Actions/ToolActi
 import "../Styles/styles.css"
 
 const Admindisplay = () => {
-    const [available, setAvailable] = useState(false)
-    const change = () => {
-        setAvailable(!available)
-    }
+    // const [available, setAvailable] = useState(false)
+    // const change = () => {
+    //     setAvailable(!available)
+    // }
     const dispatch = useDispatch()
     const logoutHandler = () => {
         dispatch(admin_logout())
@@ -50,10 +50,9 @@ const Admindisplay = () => {
     }
    }
 
-   const updateHandler = (e, id) => {
-    change()
+   const updateHandler = (id) => {
     if(window.confirm("Are you sure you want to update this tool?")) {
-        dispatch(update_tool(available, id)) 
+        dispatch(update_tool(id)) 
     }
    }
    
@@ -88,7 +87,7 @@ const Admindisplay = () => {
                                 {tool.image == "a600" ? a006 : null}
                                 <p className='text-muted malwrop'>NAME: {tool.toolName}</p>
                                 <p className='text-dark maldoll'>${tool.price}</p>
-                                <button className='malcart' onClick={(e) => updateHandler(e, tool._id)} >{tool.availability == true ? "AVAILABLE" : "NOT AVAILABLE"}</button>
+                                <button className='malcart' onClick={() => updateHandler(tool._id)} >{tool.availability == true ? "AVAILABLE" : "NOT AVAILABLE"}</button>
                                 <br></br>
                                 <button className='malcart my-3' onClick={(e) => hirehandler(e, tool._id)}>PLACE ORDER</button>
                             </div>
