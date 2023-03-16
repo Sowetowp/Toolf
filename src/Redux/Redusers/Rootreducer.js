@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { adminRegisterReducer, adminSignInReducer, getAllUsersReducer, userUpdateReducer, getSingleUserReducer, userDeleteReducer} from "./Adminreducer";
-import { getAllToolsReducer, getAvailableToolsReducer, hireReducer } from "./Toolreducer";
+import { getAllToolsReducer, getAvailableToolsReducer, hireReducer, toolUpdateReducer } from "./Toolreducer";
 import { userRegisterReducer, userSignInReducer } from "./Userreducer";
 
 const rootReducer = combineReducers({
@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
     deleteUser: userDeleteReducer,
     getAllTools: getAllToolsReducer,
     getAvailableTools: getAvailableToolsReducer,
-    toolHire: hireReducer
+    toolHire: hireReducer,
+    toolUpdate: toolUpdateReducer
 })
 export {rootReducer}

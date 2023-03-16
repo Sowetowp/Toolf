@@ -69,3 +69,25 @@ export const hire_tool = (hire, id) => async(dispatch, getState) => {
         })
     }
 }
+
+export const update_tool = (available, id) => async(dispatch, getState) => {
+    console.log(available)
+	console.log(id)
+    try {
+        dispatch({type: types.TOOL_UPDATE_REQUEST})
+        const {data} = await axios.patch(`${url}/${id}`, available)
+        if(data.status === "ok"){
+            dispatch({type: types.TOOL_UPDATE_SUCCESS, payload: data.data})
+            toast.success("Updated successfully", {
+                position: "top-right"
+            })
+        }
+    } catch (error) {
+        console.log(error)
+        const message = error.response ? error.response.data.message : "something went wrong"
+        dispatch({type: types.TOOL_UPDATE_FAIL, payload: message})
+        toast.error(message, {
+            position: "top-right"
+        })
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import a400 from "../Assets/Images/100.jpg"
 import a100 from "../Assets/Images/a100.jpg"
@@ -7,10 +7,14 @@ import a300 from "../Assets/Images/a300.jpg"
 import a500 from "../Assets/Images/a500.jpeg"
 import a600 from "../Assets/Images/a600.jpeg"
 import { admin_logout } from '../Redux/Actions/Adminaction'
-import { get_all_tools, hire_tool } from '../Redux/Actions/ToolAction'
+import { get_all_tools, hire_tool, update_tool } from '../Redux/Actions/ToolAction'
 import "../Styles/styles.css"
 
 const Admindisplay = () => {
+    const [available, setAvailable] = useState(false)
+    const change = () => {
+        setAvailable(!available)
+    }
     const dispatch = useDispatch()
     const logoutHandler = () => {
         dispatch(admin_logout())
@@ -34,6 +38,7 @@ const Admindisplay = () => {
 
     const hirehandler = (e, id) => {
     e.preventDefault()
+
     let data = {
         firstName: adminDetail.firstName,
         lastName: adminDetail.lastName,
@@ -43,8 +48,15 @@ const Admindisplay = () => {
     if(window.confirm("Are you sure you want to hire this tool?")) {
         dispatch(hire_tool(data, id)) 
     }
-  }
+   }
 
+   const updateHandler = (e, id) => {
+    change()
+    if(window.confirm("Are you sure you want to update this tool?")) {
+        dispatch(update_tool(available, id)) 
+    }
+   }
+   
     console.log(tools)
     console.log(loading)
 
@@ -76,7 +88,7 @@ const Admindisplay = () => {
                                 {tool.image == "a600" ? a006 : null}
                                 <p className='text-muted malwrop'>NAME: {tool.toolName}</p>
                                 <p className='text-dark maldoll'>${tool.price}</p>
-                                <button className='malcart'>{tool.availability == true ? "AVAILABLE" : "NOT AVAILABLE"}</button>
+                                <button className='malcart' onClick={(e) => updateHandler(e, tool._id)} >{tool.availability == true ? "AVAILABLE" : "NOT AVAILABLE"}</button>
                                 <br></br>
                                 <button className='malcart my-3' onClick={(e) => hirehandler(e, tool._id)}>PLACE ORDER</button>
                             </div>
