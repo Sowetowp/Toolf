@@ -52,7 +52,7 @@ export const get_all_user = () => async (dispatch, getState) => {
 	try {
 		dispatch({ type: types.GET_ALL_USERS_REQUEST })
 
-		const { data } = await axios.get(`https://misty-skirt-ray.cyclic.app/api/admin/`)
+		const { data } = await axios.get(`https://drab-teal-squirrel.cyclic.app/api/admin/`)
         if(data.status == "ok"){
             console.log("yes")
             console.log(data.data)
@@ -74,7 +74,7 @@ export const get_single_user = (id) => async (dispatch) => {
 	try {
 		dispatch({ type: types.GET_SINGLE_USER_REQUEST })
 
-		const { data } = await axios.get(`https://misty-skirt-ray.cyclic.app/api/admin/${id}`)
+		const { data } = await axios.get(`https://drab-teal-squirrel.cyclic.app/api/admin/${id}`)
         if(data.status == "ok"){
             console.log("yes")
             console.log(data.data)
@@ -141,7 +141,7 @@ export const get_all_orders = () => async (dispatch, getState) => {
 	try {
 		dispatch({ type: types.GET_ALL_ORDERS_REQUEST })
 
-		const { data } = await axios.get(`https://misty-skirt-ray.cyclic.app/api/admin/order/`)
+		const { data } = await axios.get(`https://drab-teal-squirrel.cyclic.app/api/admin/order/`)
         if(data.status == "ok"){
             console.log("yes")
             console.log(data.data)

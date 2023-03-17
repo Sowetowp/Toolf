@@ -1,5 +1,5 @@
 const config = {
-    liveUrl: "https://misty-skirt-ray.cyclic.app/api"
+    liveUrl: "https://drab-teal-squirrel.cyclic.app/api"
 }
 
 export {config}

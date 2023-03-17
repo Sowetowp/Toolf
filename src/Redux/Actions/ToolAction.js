@@ -8,7 +8,7 @@ export const get_all_tools = () => async (dispatch, getState) => {
 	try {
 		dispatch({ type: types.GET_ALL_TOOLS_REQUEST })
 
-		const { data } = await axios.get(`https://misty-skirt-ray.cyclic.app/api/tool/`)
+		const { data } = await axios.get(`https://drab-teal-squirrel.cyclic.app/api/tool/`)
         if(data.status == "ok"){
             console.log("yes")
             console.log(data.data)
@@ -30,7 +30,7 @@ export const get_available_tools = () => async (dispatch, getState) => {
 	try {
 		dispatch({ type: types.GET_AVAILABLE_TOOLS_REQUEST })
 
-		const { data } = await axios.get(`https://misty-skirt-ray.cyclic.app/api/tool/available`)
+		const { data } = await axios.get(`https://drab-teal-squirrel.cyclic.app/api/tool/available`)
         if(data.status == "ok"){
             console.log("yes")
             console.log(data.data)
