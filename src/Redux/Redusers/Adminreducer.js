@@ -87,3 +87,31 @@ export const userDeleteReducer = (state = {}, action) => {
 			return state
 	}
 }
+
+export const getAllOrdersReducer = (state = {}, action) => {
+	switch (action.type) {
+		case types.GET_ALL_ORDERS_REQUEST:
+			return { loading: true }
+		case types.GET_ALL_ORDERS_SUCCESS:
+			return { loading: false, orders: action.payload }
+		case types.GET_ALL_ORDERS_FAIL:
+			return { loading: false, error: action.payload }
+        case types.GET_ALL_ORDERS_RESET:
+            return {}
+		default:
+			return state
+	}
+}
+
+export const orderDeleteReducer = (state = {}, action) => {
+	switch (action.type) {
+		case types.DELETE_SINGLE_ORDER_REQUEST:
+			return { loading: true }
+		case types.DELETE_SINGLE_ORDER_SUCCESS:
+			return { loading: false, success : true }
+		case types.DELETE_SINGLE_ORDER_FAIL:
+			return { loading: false, error: action.payload }
+		default:
+			return state
+	}
+}

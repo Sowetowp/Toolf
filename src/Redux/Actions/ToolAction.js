@@ -70,12 +70,11 @@ export const hire_tool = (hire, id) => async(dispatch, getState) => {
     }
 }
 
-export const update_tool = (available, id) => async(dispatch, getState) => {
-    console.log(available)
-	console.log(id)
+export const update_tool = (id) => async(dispatch, getState) => {
+	
     try {
         dispatch({type: types.TOOL_UPDATE_REQUEST})
-        const {data} = await axios.patch(`${url}/${id}`, available)
+        const {data} = await axios.patch(`${url}/tool/${id}`)
         if(data.status === "ok"){
             dispatch({type: types.TOOL_UPDATE_SUCCESS, payload: data.data})
             toast.success("Updated successfully", {

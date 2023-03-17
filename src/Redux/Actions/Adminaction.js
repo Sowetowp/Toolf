@@ -2,7 +2,6 @@ import * as types from "../Types"
 import { config } from "../Config"
 import axios from "axios"
 import toast from "react-hot-toast"
-import { header, authHeader } from "../Header"
 
 const url = config.liveUrl
 export const admin_signup = (admin) => async(dispatch, getState) => {
@@ -134,6 +133,48 @@ export const delete_single_user = (id) => async (dispatch, getState) => {
 			? error.response.data.message
 			: 'Something went wrong'
 		dispatch({ type: types.DELETE_SINGLE_USER_FAIL, payload: message })
+		toast.error(message, { position: 'top-right' })
+	}
+}
+
+export const get_all_orders = () => async (dispatch, getState) => {
+	try {
+		dispatch({ type: types.GET_ALL_ORDERS_REQUEST })
+
+		const { data } = await axios.get(`https://misty-skirt-ray.cyclic.app/api/admin/order/`)
+        if(data.status == "ok"){
+            console.log("yes")
+            console.log(data.data)
+            dispatch({ type: types.GET_ALL_ORDERS_SUCCESS, payload: data.data })
+        }else {
+            console.log("no")
+        }
+	} catch (error) {
+		const message = error.response
+			? error.response.data.message
+			: 'Something went wrong'
+		
+		dispatch({ type: types.GET_ALL_ORDERS_FAIL, payload: message })
+		toast.error(message, { position: 'top-right' })
+	}
+}
+
+export const delete_single_order = (id) => async (dispatch, getState) => {
+	try {
+		dispatch({ type: types.DELETE_SINGLE_ORDER_REQUEST })
+
+
+		const { data } = await axios.delete(`${url}/admin/order/${id}`)
+
+		dispatch({ type: types.DELETE_SINGLE_ORDER_SUCCESS})
+		toast.success('order deleted successfully!', {
+			position: 'top-right',
+		})
+	} catch (error) {
+		const message = error.response
+			? error.response.data.message
+			: 'Something went wrong'
+		dispatch({ type: types.DELETE_SINGLE_ORDER_FAIL, payload: message })
 		toast.error(message, { position: 'top-right' })
 	}
 }
