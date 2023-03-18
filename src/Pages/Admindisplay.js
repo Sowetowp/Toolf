@@ -72,8 +72,8 @@ const Admindisplay = () => {
                     <p className='p1 mt-3 text-center'>ADMIN</p>
                     <a href='/add'><button className='ubutt mt-3'>Add User</button></a>
                     <a href='/users'><button className='ubutt mt-3'>View Users</button></a>
-                    <a href='/asi'><button className='ubutt mt-3' onClick={logoutHandler}>LOG OUT</button></a>
                     <a href='/order'><button className='ubutt mt-3'>ORDERS</button></a>
+                    <a href='/asi'><button className='ubutt mt-3' onClick={logoutHandler}>LOG OUT</button></a>
                 </div>
                 <div className='container-fluid bg-dark col-md-10' style={{minHeight:"100vh"}}>
                     <p className='text-center py-5' style={{fontWeight:"700",fontSize:"22px",color:"white"}}>ALL TOOLS</p>

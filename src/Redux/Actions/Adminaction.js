@@ -4,13 +4,13 @@ import axios from "axios"
 import toast from "react-hot-toast"
 
 const url = config.liveUrl
-export const admin_signup = (admin) => async(dispatch, getState) => {
-    console.log(admin)
+export const admin_signup = (dada) => async(dispatch, getState) => {
+    console.log("my" + " " + dada.firstName)
     try {
         dispatch({type: types.ADMIN_SIGN_UP_REQUEST})
 
         const {adminRegister: {adminDetail},} = getState()
-        const {data} = await axios.post(`${url}/admin`, admin)
+        const {data} = await axios.post("https://drab-teal-squirrel.cyclic.app/api/admin/", dada)
         if(data.status === "ok"){
             dispatch({type: types.ADMIN_SIGN_UP_SUCCESS, payload: data.data})
             toast.success("user registered successfully", {
@@ -30,7 +30,7 @@ export const admin_signup = (admin) => async(dispatch, getState) => {
 export const admin_signin = (email, password) => async(dispatch, getState) => {
     try {
         dispatch({type: types.ADMIN_SIGN_IN_REQUEST})
-        const  {data} = await axios.post(`${url}/admin/in`, {email, password})
+        const  {data} = await axios.post("https://drab-teal-squirrel.cyclic.app/api/admin/in", {email, password})
         if(data.status === "ok"){
             dispatch({type: types.ADMIN_SIGN_IN_SUCCESS, payload: data.data})
             toast.success(`Welcome ${data.data.firstName}`,{position: "top-right"})
@@ -141,7 +141,7 @@ export const get_all_orders = () => async (dispatch, getState) => {
 	try {
 		dispatch({ type: types.GET_ALL_ORDERS_REQUEST })
 
-		const { data } = await axios.get(`https://drab-teal-squirrel.cyclic.app/api/admin/order/`)
+		const { data } = await axios.get("https://drab-teal-squirrel.cyclic.app/api/tool/hire")
         if(data.status == "ok"){
             console.log("yes")
             console.log(data.data)
@@ -164,7 +164,7 @@ export const delete_single_order = (id) => async (dispatch, getState) => {
 		dispatch({ type: types.DELETE_SINGLE_ORDER_REQUEST })
 
 
-		const { data } = await axios.delete(`${url}/admin/order/${id}`)
+		const { data } = await axios.delete(`${url}/tool/hire/${id}`)
 
 		dispatch({ type: types.DELETE_SINGLE_ORDER_SUCCESS})
 		toast.success('order deleted successfully!', {

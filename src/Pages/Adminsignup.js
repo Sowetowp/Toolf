@@ -5,8 +5,10 @@ import { ADMIN_SIGN_UP_RESET } from '../Redux/Types'
 import { useNavigate } from 'react-router-dom'
 
 const Adminsignup = () => {
-
+    
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [password, setPassword] = useState("")
@@ -17,7 +19,6 @@ const Adminsignup = () => {
     const [confirmPassword, setConfirmPassword] =useState("")
     const [message, setMessage] = useState("")
 
-    const navigate = useNavigate()
 
     const adminRegister = useSelector((state) => state.adminRegister)
     const {adminDetail} = adminRegister
@@ -25,7 +26,7 @@ const Adminsignup = () => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        const data = {
+        const dada = {
             firstName,
             lastName,
             password,
@@ -37,7 +38,8 @@ const Adminsignup = () => {
         if(password !== confirmPassword){
             setMessage("password does not match")
         }else{
-            dispatch(admin_signup(data))
+            console.log(dada)
+            dispatch(admin_signup(dada))
             
         }
     }

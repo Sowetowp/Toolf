@@ -10,7 +10,7 @@ export const user_signup = (user) => async(dispatch, getState) => {
         dispatch({type: types.USER_SIGN_UP_REQUEST})
 
         const {userRegister: {userDetail},} = getState()
-        const {data} = await axios.post(`${url}/customer`, user)
+        const {data} = await axios.post("https://drab-teal-squirrel.cyclic.app/api/customer/", user)
         if(data.status === "ok"){
             dispatch({type: types.USER_SIGN_UP_SUCCESS, payload: data.data})
             toast.success("user registered successfully", {

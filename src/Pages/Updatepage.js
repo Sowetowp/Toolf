@@ -6,15 +6,16 @@ import { update_user } from '../Redux/Actions/Adminaction'
 import { get_single_user } from '../Redux/Actions/Adminaction'
 
 
-const Updatepage = (match) => {
-    const getSingleUser = useSelector((state) => state.getSingleUser)
-	const { loading, user } = getSingleUser
-    console.log(user)
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    const id = params._id
+const Updatepage = (e, id) => {
     console.log(id)
+    // const getSingleUser = useSelector((state) => state.getSingleUser)
+	// const { loading, user } = getSingleUser
+    // console.log(user)
+    // const params = new Proxy(new URLSearchParams(window.location.search), {
+    //     get: (searchParams, prop) => searchParams.get(prop),
+    // });
+    // const id = params._id
+    // console.log(id)
     const dispatch = useDispatch()
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -37,7 +38,7 @@ const Updatepage = (match) => {
             sector
         }
         
-        dispatch(update_user(data, id))
+        dispatch(toString.update_user(data, id))
     }
     
      useEffect (() => {
@@ -46,11 +47,11 @@ const Updatepage = (match) => {
         }
      }, [dispatch])
      
-     useEffect(() =>{
-        return () => {
-            dispatch(get_single_user())
-        }
-     }, [dispatch])
+    //  useEffect(() =>{
+    //     return () => {
+    //         dispatch(get_single_user())
+    //     }
+    //  }, [dispatch])
     
 
 
